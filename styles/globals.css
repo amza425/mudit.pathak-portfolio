@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .heroButton {
+    @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-xs 
+              tracking-widest text-gray-500 transition-all 
+              hover:border-[#C60001]/40 hover:text-[#C60001]/40;
+  }
+
+  .contactInput {
+    @apply outline-none bg-slate-400/10 rounded border-b 
+              px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500
+              transition-all focus:border-[#C60001]/40 focus:text-[#C60001]/40
+              hover:border-[#C60001]/40;
+  }
+}
+.range {
+  width: calc(var(--p) * 1%);
+  background-color: #ffff;
+  height: 20px;
+}
+
+.range {
+  position: relative;
+  background-color: #333;
+  width: 300px;
+  height: 30px;
+  transform: skew(30deg);
+  font-family: "Orbitron", monospace;
+}
+.range:before {
+  --width: calc(100 * 1%);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #ffff;
+  z-index: 0;
+  animation: load 0.5s forwards linear, glitch 2s infinite linear;
+}
+.range:after {
+  counter-reset: progress 100;
+  content: counter(progress) "%";
+  color: #000;
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%) skewX(-30deg);
+  z-index: 1;
+}
+.range__label {
+  transform: skew(-30deg) translateY(-100%);
+  line-height: 1.5;
+}
+@keyframes load {
+  to {
+    width: var(--width);
+  }
+}
+@keyframes glitch {
+  0%,
+  5% {
+    transform: translate(0, 0);
+  }
+  1% {
+    transform: translate(-5%, -10%);
+  }
+  2% {
+    transform: translate(10%, 30%);
+  }
+  3% {
+    transform: translate(-43%, 10%);
+  }
+  4% {
+    transform: translate(2%, -23%);
+  }
+}
